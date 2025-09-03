@@ -1,86 +1,1171 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="assets/img/favicon.svg"><title>White Swan Barber Shop — Fort Wayne, IN</title>
-<meta name="description" content="Classic haircuts, flat tops, beard trims, and shaves in a clean, friendly shop.">
-<link rel="stylesheet" href="assets/css/main.css">
-<meta property="og:title" content="White Swan Barber Shop"><meta property="og:description" content="Old‑school cuts with modern comfort in Fort Wayne."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/hero-bg.svg"></head>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>White Swan Barber Shop — Fort Wayne's Premier Barbershop</title>
+    <meta name="description" content="Experience the finest traditional barbering in Fort Wayne. Classic cuts, precision shaves, and timeless craftsmanship since 2009.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --rich-gold: #B8941F;
+            --deep-brown: #2C1810;
+            --warm-brown: #3D251A;
+            --cream: #F8F6F0;
+            --warm-white: #FEFCF7;
+            --charcoal: #1A1A1A;
+            --silver: #8B8680;
+            --accent-red: #8B2635;
+            --leather-brown: #6B4423;
+            
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-medium: 0 8px 40px rgba(0,0,0,0.15);
+            --shadow-hard: 0 12px 60px rgba(0,0,0,0.2);
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--charcoal);
+            background: var(--warm-white);
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(248, 246, 240, 0.98);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 90px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--deep-brown);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--rich-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-brown);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--rich-gold);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--deep-brown);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -20%;
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stripes" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)"><rect width="4" height="8" fill="%23D4AF37" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23stripes)"/></svg>') repeat;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            padding-top: 90px;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: var(--deep-brown);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--deep-brown);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--warm-brown);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-gold), var(--rich-gold));
+            color: var(--deep-brown);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hard);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--deep-brown);
+            color: var(--deep-brown);
+        }
+
+        .btn-secondary:hover {
+            background: var(--deep-brown);
+            color: var(--cream);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .barber-chair {
+            width: 400px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--leather-brown) 0%, var(--warm-brown) 100%);
+            border-radius: 20px;
+            position: relative;
+            box-shadow: var(--shadow-hard);
+            border: 3px solid var(--primary-gold);
+        }
+
+        .barber-chair::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="%23D4AF37" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10l.9 7.2c.1.8-.5 1.5-1.3 1.5H7.4c-.8 0-1.4-.7-1.3-1.5L7 4z"/></svg>') center/contain no-repeat;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 0;
+            background: var(--warm-white);
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--deep-brown);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--warm-brown);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: var(--cream);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--rich-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-brown);
+            margin-bottom: 1rem;
+        }
+
+        .feature-text {
+            color: var(--warm-brown);
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--cream) 0%, rgba(212, 175, 55, 0.05) 100%);
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--warm-white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-left-color: var(--rich-gold);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--deep-brown);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--warm-brown);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 0;
+            background: var(--warm-white);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--deep-brown);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .about-text p {
+            color: var(--warm-brown);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--warm-brown);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--leather-brown) 0%, var(--warm-brown) 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--primary-gold);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--deep-brown) 0%, var(--warm-brown) 100%);
+            color: var(--cream);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-text h3 {
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-text p {
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        .contact-text a {
+            color: var(--primary-gold);
+            text-decoration: none;
+        }
+
+        .contact-text a:hover {
+            text-decoration: underline;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .hours-day {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: var(--silver);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-text {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--silver);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(139, 134, 128, 0.3);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .barber-chair {
+                width: 300px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .hero-content,
+            .features-container,
+            .services-container,
+            .about-container,
+            .contact-container,
+            .footer-container {
+                padding: 0 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                max-width: 300px;
+            }
+            
+            .feature-card,
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .barber-chair {
+                width: 250px;
+                height: 300px;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
 <body>
-<header class="site" role="banner">
-  <div class="container navbar">
-    <a class="brand" href="index.html" aria-label="White Swan Barber Shop home">
-      <img src="assets/img/logo.svg" alt="White Swan Barber Shop logo">
-    </a>
-    <nav class="navlinks" aria-label="Primary">
-      <a href="index.html" class="active">Home</a>
-      <a href="services.html" class="">Services</a>
-      <a href="barbers.html" class="">Barbers</a>
-      <a href="booking.html" class="">Schedule</a>
-      <a href="contact.html" class="">Contact</a>
-    </nav>
-    <button class="mobile-toggle" aria-label="Toggle navigation">☰</button>
-  </div>
-</header><section class="hero" role="img" aria-label="Barbershop theme stripes"><div class="container wrap"><div>
-<span class="badge">Fort Wayne · Since 2009</span><h1>Old‑school Barbering,<br>Modern Comfort</h1><p class="lead">Walk‑ins welcome. Clean, consistent cuts for all ages—enjoy coffee and TV while you wait.</p>
-<div class="cta" style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap"><a class="btn primary" href="booking.html" aria-disabled="true">Schedule (Coming Soon)</a><a class="btn" href="tel:+12604895111">Call (260) 489‑5111</a></div>
-</div><figure class="kv card"><img src="assets/img/hero-bg.svg" alt="Stylized barber stripes background"></figure></div></section>
-<main><section class="section"><div class="container grid cards"><div class="card"><h3>Walk‑ins Welcome</h3><p>Fast, reliable service with a classic touch.</p></div><div class="card"><h3>Clean & Comfortable</h3><p>Vacuum system keeps you tidy; complimentary coffee and cable TV.</p></div><div class="card"><h3>Family Friendly</h3><p>Great with kids and seniors; we remember your preferred style.</p></div></div></section>
-<section class="section"><div class="container"><div class="card"><h2 style="margin-top:0">Popular Services</h2><div class="grid cards"><div class="card"><h3>Classic Cut</h3><p>Clean, timeless look for everyday.</p></div><div class="card"><h3>Fade / Flat Top</h3><p>Sharp lines and precise finishes.</p></div><div class="card"><h3>Beard Trim</h3><p>Tidy shaping and conditioning.</p></div></div><p class="small" style="margin-top:10px">Call for pricing and availability.</p><p><a class="btn" href="services.html">See All Services</a></p></div></div></section></main>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10l.9 7.2c.1.8-.5 1.5-1.3 1.5H7.4c-.8 0-1.4-.7-1.3-1.5L7 4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="logo-text">White Swan</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-<footer class="site" role="contentinfo">
-  <div class="container footer-grid">
-    <div>
-      <img src="assets/img/logo.svg" alt="" style="height:36px"><br><br>
-      <p class="small">Old-school cuts with modern comfort in Fort Wayne.</p>
-      <p class="small">© 2025 White Swan Barber Shop</p>
-    </div>
-    <div>
-      <h3>Visit</h3>
-      <p>1715 Cremer Ave<br>Fort Wayne, IN 46818</p>
-    </div>
-    <div>
-      <h3>Hours</h3>
-      <p class="small">Tue–Fri 9:00 AM – 5:00 PM<br>Sat 8:00 AM – 12:00 PM<br>Sun/Mon Closed</p>
-      <h3>Contact</h3>
-      <p class="small">Phone: <a href="tel:+12604895111">(260) 489‑5111</a><br>Text (Thu nights): <a href="sms:+12604464430">(260) 446‑4430</a></p>
-    </div>
-  </div>
-</footer>
-<script src="assets/js/main.js" defer></script>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">Fort Wayne • Since 2009</span>
+                <h1 class="hero-title serif">Classic Barbering, Modern Excellence</h1>
+                <p class="hero-subtitle">Experience the finest traditional barbering in Fort Wayne. Where timeless craftsmanship meets contemporary comfort for the discerning gentleman.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Schedule Appointment</a>
+                    <a href="tel:+12604895111" class="btn btn-secondary">Call (260) 489-5111</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="barber-chair"></div>
+            </div>
+        </div>
+    </section>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Barbershop",
-  "name": "White Swan Barber Shop",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "1715 Cremer Ave",
-    "addressLocality": "Fort Wayne",
-    "addressRegion": "IN",
-    "postalCode": "46818",
-    "addressCountry": "US"
-  },
-  "telephone": "+1-260-489-5111",
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "09:00",
-      "closes": "17:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Saturday"
-      ],
-      "opens": "08:00",
-      "closes": "12:00"
-    }
-  ],
-  "url": "https://example.com"
-}
-</script></body></html>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="features-header scroll-reveal">
+                <h2 class="section-title serif">The White Swan Experience</h2>
+                <p class="section-subtitle">Step into a world where traditional craftsmanship meets modern sophistication. Every detail designed for your comfort and satisfaction.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L13.09 8.26L20 12L13.09 15.74L12 22L10.91 15.74L4 12L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Master Craftsmanship</h3>
+                    <p class="feature-text">Our skilled barbers bring years of experience and passion to every cut, ensuring precision and artistry in every service.</p>
+                </div>
+                
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9.5 9A3 3 0 1017 12.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Premium Atmosphere</h3>
+                    <p class="feature-text">Relax in our sophisticated environment with leather seating, complimentary beverages, and entertainment while you wait.</p>
+                </div>
+                
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L15.09 8.26L23 9L17 14.74L18.18 23L12 19.77L5.82 23L7 14.74L1 9L8.91 8.26L12 1Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Family Legacy</h3>
+                    <p class="feature-text">Serving Fort Wayne families for over a decade, creating lasting relationships and memorable experiences for all ages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="features-header scroll-reveal">
+                <h2 class="section-title serif">Our Services</h2>
+                <p class="section-subtitle">From classic cuts to precision shaves, every service is delivered with meticulous attention to detail and old-world craftsmanship.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card scroll-reveal">
+                    <h3 class="service-title">The Classic Cut</h3>
+                    <p class="service-description">Our signature service featuring consultation, precision cutting, hot towel treatment, and styling. The perfect blend of traditional technique and modern style.</p>
+                    <div class="service-price">Call for Pricing</div>
+                </div>
+                
+                <div class="service-card scroll-reveal">
+                    <h3 class="service-title">Precision Fade & Flat Top</h3>
+                    <p class="service-description">Sharp, clean lines with expert blending. Our barbers specialize in military-grade precision cuts and contemporary fade styles.</p>
+                    <div class="service-price">Call for Pricing</div>
+                </div>
+                
+                <div class="service-card scroll-reveal">
+                    <h3 class="service-title">Traditional Straight Razor Shave</h3>
+                    <p class="service-description">Experience the ultimate in luxury with our traditional hot towel shave. Includes pre-shave oil, hot towels, and moisturizing aftercare.</p>
+                    <div class="service-price">Call for Pricing</div>
+                </div>
+                
+                <div class="service-card scroll-reveal">
+                    <h3 class="service-title">Beard Sculpting & Trim</h3>
+                    <p class="service-description">Professional beard grooming with precision trimming, shaping, and conditioning treatments to maintain your perfect look.</p>
+                    <div class="service-price">Call for Pricing</div>
+                </div>
+                
+                <div class="service-card scroll-reveal">
+                    <h3 class="service-title">Young Gentlemen's Cut</h3>
+                    <p class="service-description">Patient, friendly service for our younger clients. We make every child's first haircut a memorable and comfortable experience.</p>
+                    <div class="service-price">Call for Pricing</div>
+                </div>
+                
+                <div class="service-card scroll-reveal">
+                    <h3 class="service-title">Senior Services</h3>
+                    <p class="service-description">Respectful, gentle care for our distinguished senior clients. We remember your preferences and provide comfortable, unhurried service.</p>
+                    <div class="service-price">Call for Pricing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-text scroll-reveal">
+                <h2 class="serif">Meet Mark, Master Barber</h2>
+                <p>With over 15 years of experience behind the chair, Mark has built White Swan Barber Shop into Fort Wayne's premier destination for classic barbering. His dedication to the craft and commitment to each client's satisfaction has earned him a loyal following throughout the community.</p>
+                <p>Mark specializes in timeless cuts, precision fades, and traditional shaves, combining old-school techniques with modern styling sensibilities. His friendly demeanor and professional expertise create an atmosphere where every client feels valued and leaves looking their absolute best.</p>
+                <p>"Every client deserves to feel confident and distinguished. That's what drives me to perfect my craft every single day."</p>
+                
+                <div class="about-stats">
+                    <div class="stat scroll-reveal">
+                        <span class="stat-number serif">15+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat scroll-reveal">
+                        <span class="stat-number serif">5000+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat scroll-reveal">
+                        <span class="stat-number serif">2009</span>
+                        <span class="stat-label">Est. Fort Wayne</span>
+                    </div>
+                    <div class="stat scroll-reveal">
+                        <span class="stat-number serif">★★★★★</span>
+                        <span class="stat-label">Client Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-visual scroll-reveal">
+                <div class="about-image">
+                    <!-- Placeholder for barber/shop image -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--primary-gold);">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p style="margin-top: 1rem; font-family: 'Playfair Display', serif; font-size: 1.2rem;">Master Barber at Work</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info scroll-reveal">
+                <h2 class="serif">Visit Our Shop</h2>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>1715 Cremer Ave<br>Fort Wayne, IN 46818</p>
+                            <a href="https://www.google.com/maps?q=1715+Cremer+Ave,+Fort+Wayne,+IN+46818" target="_blank" rel="noopener">View on Google Maps →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Phone & Text</h3>
+                            <p>Phone: <a href="tel:+12604895111">(260) 489-5111</a></p>
+                            <p>Text (Thu evenings): <a href="sms:+12604464430">(260) 446-4430</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Hours of Operation</h3>
+                            <div class="hours-grid">
+                                <div class="hours-day">
+                                    <span>Tuesday</span>
+                                    <span>9:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="hours-day">
+                                    <span>Wednesday</span>
+                                    <span>9:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="hours-day">
+                                    <span>Thursday</span>
+                                    <span>9:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="hours-day">
+                                    <span>Friday</span>
+                                    <span>9:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="hours-day">
+                                    <span>Saturday</span>
+                                    <span>8:00 AM - 12:00 PM</span>
+                                </div>
+                                <div class="hours-day">
+                                    <span>Sun/Mon</span>
+                                    <span>Closed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form scroll-reveal">
+                <div style="background: rgba(212, 175, 55, 0.1); padding: 3rem; border-radius: 20px; border: 2px solid var(--primary-gold);">
+                    <h3 style="color: var(--primary-gold); font-size: 1.8rem; margin-bottom: 2rem; font-family: 'Playfair Display', serif; text-align: center;">Walk-ins Welcome</h3>
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">No appointment necessary! Come in during business hours for exceptional service.</p>
+                        <p style="margin-bottom: 2rem;">Online booking system coming soon for your convenience.</p>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <a href="tel:+12604895111" class="btn btn-primary" style="justify-content: center; background: var(--primary-gold); color: var(--deep-brown);">
+                            📞 Call Now: (260) 489-5111
+                        </a>
+                        <a href="https://www.google.com/maps?q=1715+Cremer+Ave,+Fort+Wayne,+IN+46818" target="_blank" class="btn" style="justify-content: center; background: transparent; border: 2px solid var(--primary-gold); color: var(--primary-gold);">
+                            📍 Get Directions
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">
+                        <p style="color: var(--cream); margin-bottom: 1rem;">
+                            <strong>What to Expect:</strong>
+                        </p>
+                        <ul style="list-style: none; padding: 0; color: var(--cream);">
+                            <li style="margin-bottom: 0.5rem;">✓ Professional consultation</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Premium products & tools</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Comfortable waiting area</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Complimentary beverages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo serif">White Swan Barber Shop</div>
+            <p class="footer-text">Old-school cuts with modern comfort in Fort Wayne. Where craftsmanship meets character.</p>
+            
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="tel:+12604895111">Call Us</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 White Swan Barber Shop. All rights reserved. | Proudly serving Fort Wayne since 2009.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 90;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.pageYOffset >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu functionality (placeholder for future implementation)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', function() {
+            // Toggle mobile menu
+            console.log('Mobile menu clicked - implement toggle functionality');
+        });
+
+        // Add loading animation delay to elements
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+        scrollRevealElements.forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                const rate = scrolled * -0.5;
+                hero.style.transform = `translate3d(0, ${rate}px, 0)`;
+            }
+        });
+    </script>
+</body>
+</html>
