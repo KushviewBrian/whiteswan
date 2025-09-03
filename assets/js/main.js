@@ -1,0 +1,1 @@
+const t=document.querySelector('.mobile-toggle'),l=document.querySelector('.navlinks');t&&l&&t.addEventListener('click',()=>{const o=l.style.display==='flex';l.style.display=o?'none':'flex'})
